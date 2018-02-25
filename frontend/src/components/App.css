@@ -1,0 +1,465 @@
+* { box-sizing: border-box; }
+
+html, body, .root {
+  height: 100%;
+}
+body {
+  line-height: 1.5;
+}
+body, .app {
+  background: #333;
+}
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.App-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+.open {
+  right: 50px;
+  bottom: 50px;
+}
+.open a {
+  display: block;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #06878b;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 28px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  font-size: 0;
+  
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 10px;
+  text-transform: uppercase;
+  color: white;
+  text-align: center;
+  line-height: 55px;
+  margin: 8px;
+}
+
+.navigator {
+  position: absolute;
+  margin-top: 100px;
+}
+
+.post {
+  border-radius:3px;
+  border:0;
+  background:pink;
+  padding:15px 12px 15px 40px;
+  font:bold 9px/1.2 arial;
+  text-transform:uppercase;
+  letter-spacing:1px;
+  box-shadow:0 1px 1px rgba(0,0,0,.2);
+  outline:none;
+  position:relative;
+  transition: all .3s ease-out; 
+  cursor:pointer;
+  overflow:hidden;
+  margin-bottom:30px;
+  margin:100px;
+}
+
+.comment {
+  border-radius:3px;
+  border:0;
+  background:aquamarine;
+  padding:15px 12px 15px 40px;
+  font:bold 9px/1.2 arial;
+  text-transform:uppercase;
+  letter-spacing:1px;
+  color:$red;
+  box-shadow:0 1px 1px rgba(0,0,0,.2);
+  outline:none;
+  position:relative;
+  transition: all .3s ease-out; 
+  cursor:pointer;
+  overflow:hidden;
+  margin-bottom:30px;
+  margin:100px;
+}
+
+/**/
+.button {
+  position: relative;
+  width: 2.5rem;
+  height: 2.5rem;
+  margin: 2rem;
+  border-radius: 50%;
+  float: left;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 0px;
+}
+.button > span {
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.bg {
+  border-radius: 50%;
+  background-color: black;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s linear;
+}
+.cancel {
+  flex: 1 1 100%;
+  margin-top: 1rem;
+  text-align: center;
+}
+.cancel a {
+  display: inline-block;
+  padding: 0.5rem;
+  border-radius: 5px;
+  color: #fff;
+  font-family: monospace;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  line-height: 1.4;
+  transition: background-color 0.1s linear;
+}
+.cancel a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+.cancel a:active {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+.symbol::before, .symbol::after {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  display: block;
+  margin: auto;
+  border-radius: 2px;
+  content: "";
+}
+.symbol::before{
+  width: 2rem;
+  height: 0.3rem;
+  background-color: #515676;
+  transition: background-color 1s linear;
+}
+.plus .symbol::after {
+  width: 0.3rem;
+  height: 2rem;
+  background-color: #515676;
+}
+.bg::before, .bg::after {
+  position: absolute;
+  top: -4.75rem;
+  left: -4.75rem;
+  display: block;
+  width: 15rem;
+  height: 15rem;
+  border: 4px solid #fff;
+  border-radius: 50%;
+  box-sizing: border-box;
+  content: "";
+  transform: scale(0.4);
+  opacity: 0;
+}
+.button:hover .bg {
+  background-color: rgba(255, 255, 255, 0.3)
+}
+.bg:target {
+  animation: push 1s ease-out;
+  transition: all 1s linear;
+}
+#plus:target {
+  background-color: #def186;
+}
+#minus:target {
+  background-color: #515676;
+}
+#minus:target + .symbol::before {
+  background-color: #def186;
+}
+.bg:target::before, .bg:target::after {
+  animation: wave 1s ease-in-out;
+}
+.bg:target::before {
+  animation-delay: 0.2s;
+}
+.bg:target::after {
+  animation-delay: 0.3s;
+}
+
+@keyframes push {
+  15% {transform: scale(0.75); box-shadow: 0 0 1px rgba(0, 0, 0, 0.3)}
+  75% {transform: scale(1.1); box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1)}
+  100% {transform: scale(1)}
+}
+
+@keyframes wave {
+  10% {opacity: 0.3}
+  100% {transform: scale(1); opacity: 0}
+}
+/**/
+
+.document {
+  width: 140px;
+}
+
+.document-cover {
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  background: #eee;
+}
+
+.document-cover-title {
+  padding: 20px 10px 0;
+  text-align: center;
+  font-size: 0.8em;
+}
+
+
+/*List Categories*/
+.categories-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.categories-list li {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.categories-list img {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto;
+  border-radius: 3px;
+}
+/**/
+
+/* Add Post */
+form {
+ 	background:#111; 
+  width:300px;
+  margin:30px auto;
+  border-radius:0.4em;
+  border:1px solid #191919;
+  overflow:hidden;
+  position:relative;
+  box-shadow: 0 5px 10px 5px rgba(0,0,0,0.2);
+}
+
+form:after {
+  content:"";
+  display:block;
+  position:absolute;
+  height:1px;
+  width:100px;
+  left:20%;
+  top:0;
+}
+
+form:before {
+ 	content:"";
+  display:block;
+  position:absolute;
+  width:8px;
+  height:5px;
+  border-radius:50%;
+  left:34%;
+  top:-7px;
+  box-shadow: 0 0 6px 4px #fff;
+}
+
+.inset {
+ 	padding:20px; 
+  border-top:1px solid #19191a;
+}
+
+form h1 {
+  font-size:18px;
+  text-shadow:0 1px 0 black;
+  text-align:center;
+  padding:15px 0;
+  border-bottom:1px solid rgba(0,0,0,1);
+  position:relative;
+}
+
+form h1:after {
+ 	content:"";
+  display:block;
+  width:250px;
+  height:100px;
+  position:absolute;
+  top:0;
+  left:50px;
+  pointer-events:none;
+  transform:rotate(70deg);
+  background:linear-gradient(50deg, rgba(255,255,255,0.15), rgba(0,0,0,0));
+  
+}
+
+label {
+ 	color:#666;
+  display:block;
+  padding-bottom:9px;
+}
+
+input[type=text],
+input[type=password] {
+ 	width:100%;
+  padding:8px 5px;
+  background:linear-gradient(#1f2124, #27292c);
+  border:1px solid pink;
+  box-shadow: 0 1px 0 rgba(255,255,255,0.1);
+  border-radius:0.3em;
+  margin-bottom:20px;
+  color:pink;
+}
+
+label[for=remember]{
+ 	color:white;
+  display:inline-block;
+  padding-bottom:0;
+  padding-top:5px;
+}
+
+input[type=checkbox] {
+ 	display:inline-block;
+  vertical-align:top;
+}
+
+.p-container {
+ 	padding:0 20px 20px 20px; 
+}
+
+.p-container:after {
+ 	clear:both;
+  display:table;
+  content:"";
+}
+
+.p-container span {
+  display:block;
+  float:left;
+  color:pink;
+  padding-top:8px;
+}
+
+input[type=submit] {
+ 	padding:5px 20px;
+  border:1px solid rgba(0,0,0,0.4);
+  text-shadow:0 -1px 0 rgba(0,0,0,0.4);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.3),
+    inset 0 10px 10px rgba(255,255,255,0.1);
+  border-radius:0.3em;
+  background:#0184ff;
+  color:white;
+  float:right;
+  font-weight:bold;
+  cursor:pointer;
+  font-size:13px;
+}
+
+input[type=submit]:hover {
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.3),
+    inset 0 -10px 10px rgba(255,255,255,0.1);
+}
+
+input[type=text]:hover,
+input[type=password]:hover,
+label:hover ~ input[type=text],
+label:hover ~ input[type=password] {
+   background:pink;
+   color:black;
+}
+/**/
+
+/* Button */
+.button-two {
+  border-radius: 4px;
+  background-color:pink;
+  border: none;
+  padding: 20px;
+  width: 100px;
+  height: 50px;
+  margin-bottom: 10px;
+  margin-left: 190px;
+}
+/**/
+
+/* View Detail */
+h1 {
+  text-align: center;
+  font-family: Tahoma, Arial, sans-serif;
+  color: aquamarine;
+  margin: 80px 0;
+}
+
+h2 {
+  text-align: center; 
+  font-family: Aria;
+  color: pink;
+  margin-left: 30px;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  transition: opacity 500ms;
+  visibility: hidden;
+  opacity: 0;
+}
+.overlay:target {
+  visibility: visible;
+  opacity: 1;
+}
+
+.buttonComment {
+  font-size: 1em;
+  margin-top: 15px;
+  padding: 10px;
+  color: white;
+  border: 2px solid white;
+  border-radius: 20px/50px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease-out;
+}
+.buttonComment:hover {
+  background: black;
+}
+/**/
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+
